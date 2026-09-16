@@ -22,23 +22,3 @@ update the `:root` values in `themes/default/styles.css` to match.
 
 The pinned linkme version lives in the `Justfile`; bump it there and in
 `.github/workflows/pages.yml` to pick up upstream changes.
-
-## Deploy prerequisites (one-time)
-
-1. Settings → Pages → Build and deployment → Source: **GitHub Actions**.
-2. DNS for `carolinebrewer.io` (the workflow writes the `CNAME` file):
-
-   | Name | Type | Value |
-   |---|---|---|
-   | `@` | A | `185.199.108.153` |
-   | `@` | A | `185.199.109.153` |
-   | `@` | A | `185.199.110.153` |
-   | `@` | A | `185.199.111.153` |
-   | `www` | CNAME | `barolinecrewer.github.io.` |
-
-   Then Settings → Pages → Custom domain → `carolinebrewer.io`, and tick Enforce HTTPS
-   once the certificate is issued.
-
-No custom domain yet? Drop the `echo carolinebrewer.io > dist/CNAME` step from
-`.github/workflows/pages.yml` and the site serves at
-`https://barolinecrewer.github.io/carolinebrewer.io/`.
