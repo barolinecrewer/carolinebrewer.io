@@ -1,0 +1,30 @@
+configVersion: "1.0"
+
+# Profile
+name: "Caroline Brewer"
+subtitle: ""
+description: |
+  CRO thinker and tinker-er
+avatar: "assets/avatar.jpg"
+favicon: "assets/favicon.svg"
+
+# Theme selection: default | polysleek
+theme: "default"
+
+# type: color | image | gradient | particles
+background:
+  type: "color"
+  value: "#F2EAE0"
+
+# Main links (large buttons)
+# icon: Simple Icons slug, or a Lucide name with icon-provider: "lucide"
+links:
+  - title: "GitHub"
+    url: "https://github.com/barolinecrewer"
+    icon: "github"
+    color: "#363B44"  # charcoal
+
+  - title: "LinkedIn"
+    url: "https://www.linkedin.com/in/caroline-brewer/"
+    icon: "linkedin"
+    color: "#6E8FA8"  # blue-gray (system primary)
