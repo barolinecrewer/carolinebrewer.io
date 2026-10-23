@@ -1,0 +1,5 @@
+/* Milo illustration — recolourable via CSS masks. Ink layer takes any colour; optional fill layer sits behind it. */
+.milo{position:relative;display:block;aspect-ratio:3/2;width:100%}
+.milo>span{position:absolute;inset:0;-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center}
+.milo--point>.milo-fill{-webkit-mask-image:url('../assets/milo/milo-point-shape-mask.png');mask-image:url('../assets/milo/milo-point-shape-mask.png')}
+.milo--point>.milo-ink{-webkit-mask-image:url('../assets/milo/milo-point.svg');mask-image:url('../assets/milo/milo-point.svg')}

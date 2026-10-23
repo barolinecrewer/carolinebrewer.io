@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/caroline-brewer-v2-9346c825-8173-4d64-a0c0-9cea063e7aa4/tokens/icons.css">
+  <link rel="stylesheet" href="_ds/caroline-brewer-v2-9346c825-8173-4d64-a0c0-9cea063e7aa4/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/caroline-brewer-v2-9346c825-8173-4d64-a0c0-9cea063e7aa4/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/caroline-brewer-v2-9346c825-8173-4d64-a0c0-9cea063e7aa4/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/caroline-brewer-v2-9346c825-8173-4d64-a0c0-9cea063e7aa4/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/caroline-brewer-v2-9346c825-8173-4d64-a0c0-9cea063e7aa4/tokens/texture.css">
+  <link rel="stylesheet" href="_ds/caroline-brewer-v2-9346c825-8173-4d64-a0c0-9cea063e7aa4/tokens/effects.css">
+  <link rel="stylesheet" href="_ds/caroline-brewer-v2-9346c825-8173-4d64-a0c0-9cea063e7aa4/tokens/milo.css">
+  <link rel="stylesheet" href="_ds/caroline-brewer-v2-9346c825-8173-4d64-a0c0-9cea063e7aa4/tokens/base.css">
+  <link rel="stylesheet" href="_ds/caroline-brewer-v2-9346c825-8173-4d64-a0c0-9cea063e7aa4/styles.css">
+  <script src="_ds/caroline-brewer-v2-9346c825-8173-4d64-a0c0-9cea063e7aa4/_ds_bundle.js"></script>
+  <style>body{margin:0}a{color:var(--cobalt)}a:hover{color:var(--cobalt-dark)}</style>
+</helmet>
+<div class="print" style="background-color:var(--surface-page);min-height:100vh;display:flex;flex-direction:column;font-family:var(--font-body);color:var(--text-body)">
+
+  <header class="print-dark" style="background-color:var(--cobalt);color:var(--v2-cream)"><div style="max-width:1120px;box-sizing:border-box;margin:0 auto;padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+    <a href="#" style="font-family:var(--font-hero);font-size:var(--text-lg);color:var(--v2-cream);text-decoration:none;letter-spacing:.02em">Caroline Brewer</a>
+    
+  </div></header>
+
+  <section class="print-dark" style="background-color:var(--cobalt);margin-top:-1px;color:var(--v2-cream)">
+    <div style="max-width: 1120px; box-sizing: border-box; margin: 0 auto; padding: 32px 24px 56px; display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 16px; align-items: center">
+      <div style="display: flex; flex-direction: column; gap: 20px; justify-content: center; width: 100%">
+        <sc-if value="{{ fxExtrude }}" hint-placeholder-val="{{ true }}">
+          <h1 class="fx-extrude" style="margin: 0; font-family: var(--font-hero); font-weight: 400; font-size: clamp(46px,8vw,88px); line-height: 1.1; width: 613px; height: 99px">Hi, I'm Caroline!</h1>
+        </sc-if>
+        <sc-if value="{{ fxPlain }}" hint-placeholder-val="{{ false }}">
+          <h1 style="margin:0;font-family:var(--font-alt-display);font-weight:300;letter-spacing:.08em;font-size:clamp(46px,8vw,88px);line-height:1.1;color:var(--v2-cream)">Building a case.</h1>
+        </sc-if>
+        <p style="margin:0;font-size:var(--text-md);line-height:1.6;max-width:46ch;color:var(--v2-cream)">Optimizer and tinkerer.</p>
+      </div>
+      <sc-if value="{{ showMilo }}" hint-placeholder-val="{{ true }}">
+        <div style="width:min(320px,36vw)">
+          <x-import component-from-global-scope="CarolineBrewerV2_9346c8.Milo" ink="{{ miloInk }}" fill="{{ miloFill }}" width="100%" label="Milo, pointing" hint-size="100%,213px"></x-import>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <main style="flex:1;max-width:760px;width:100%;box-sizing:border-box;margin:0 auto;padding:56px 24px 72px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:20px">
+      <h2 style="margin:0;font-family:var(--font-hero);font-weight:400;font-size:var(--text-2xl);line-height:1.1;color:var(--cobalt)">Field Notes</h2>
+      
+    </div>
+
+    <div style="display:flex;flex-direction:column;border-top:1px solid var(--border-subtle)">
+      <sc-for list="{{ items }}" as="it" hint-placeholder-count="5">
+        <article style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:20px;padding:26px 0;border-bottom:{{ it.rule }}">
+          <div style="display:flex;flex-direction:column;gap:6px;padding-top:3px">
+            <span style="font-family:var(--font-stamp);font-size:var(--text-2xs);letter-spacing:var(--tracking-stamp);text-transform:uppercase;color:var(--v2-ink-muted)">{{ it.date }}</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px;min-width:0">
+            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+              <x-import component-from-global-scope="CarolineBrewerV2_9346c8.Badge" tone="{{ it.tone }}" hint-size="70px,22px">{{ it.kindLabel }}</x-import>
+              <span style="font-family:var(--font-stamp);font-size:var(--text-2xs);letter-spacing:var(--tracking-stamp);text-transform:uppercase;color:var(--v2-ink-muted)">{{ it.repo }}</span>
+            </div>
+            <h3 style="margin:0;font-weight:700;font-size:var(--text-md);line-height:1.3;text-wrap:pretty">
+              <a href="#" style="color:var(--v2-ink);text-decoration:underline;text-decoration-color:transparent;text-underline-offset:4px;text-decoration-thickness:2px;transition:color .15s, text-decoration-color .15s" style-hover="color:var(--cobalt);text-decoration-color:var(--tomato)" onMouseEnter="{{ it.enter }}" onMouseLeave="{{ it.leave }}">{{ it.title }}<span style="color:{{ it.arrow }};font-size:.65em;font-weight:900;-webkit-text-stroke:.6px {{ it.arrow }};transition:color .15s;margin-left:.9em;vertical-align:.1em">↗</span></a>
+            </h3>
+            <p style="margin:0;font-size:var(--text-sm);line-height:1.6;color:var(--v2-ink-muted);text-wrap:pretty;max-width:62ch">{{ it.body }}</p>
+            <sc-if value="{{ it.hasList }}" hint-placeholder-val="{{ false }}">
+              <ul style="margin:0;padding:0 0 0 18px;display:flex;flex-direction:column;gap:4px;font-size:var(--text-sm);line-height:1.5;color:var(--v2-ink)">
+                <sc-for list="{{ it.list }}" as="c" hint-placeholder-count="3">
+                  <li>{{ c }}</li>
+                </sc-for>
+              </ul>
+            </sc-if>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+
+    <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+      <p style="margin:24px 0 0;color:var(--v2-ink-muted)">Nothing in this pile yet. Milo is looking into it.</p>
+    </sc-if>
+
+    </main>
+
+  <footer class="print-dark" style="background-color:var(--v2-ink);color:var(--v2-cream)">
+    <div style="max-width:1120px;box-sizing:border-box;margin:0 auto;padding:28px 24px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap">
+      <span style="font-family:var(--font-stamp);font-size:var(--text-xs);letter-spacing:var(--tracking-stamp);text-transform:uppercase">© 2026 Caroline Brewer</span>
+      <div style="display:flex;gap:20px;font-weight:700;font-size:var(--text-sm)">
+        <a href="#" style="display:flex;align-items:center;gap:6px;color:var(--v2-cream);text-decoration:none">
+          <x-import component-from-global-scope="CarolineBrewerV2_9346c8.Icon" name="github" size="16" hint-size="16px,16px"></x-import>GitHub
+        </a>
+        <a href="#" style="display:flex;align-items:center;gap:6px;color:var(--v2-cream);text-decoration:none">
+          <x-import component-from-global-scope="CarolineBrewerV2_9346c8.Icon" name="linkedin" size="16" hint-size="16px,16px"></x-import>LinkedIn
+        </a>
+        <a href="#" style="display:flex;align-items:center;gap:6px;color:var(--v2-cream);text-decoration:none">
+          <x-import component-from-global-scope="CarolineBrewerV2_9346c8.Icon" name="mail" size="16" hint-size="16px,16px"></x-import>Email
+        </a>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;heroEffect&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;extrude&quot;,&quot;dreamboat&quot;],&quot;default&quot;:&quot;extrude&quot;,&quot;tsType&quot;:&quot;'extrude'|'dreamboat'&quot;},&quot;showMilo&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;miloPairing&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Yolk on cream&quot;,&quot;Cream line, no fill&quot;,&quot;Tomato on cream&quot;,&quot;Ink on yolk&quot;,&quot;Kelly on cream&quot;,&quot;Cobalt on cream&quot;],&quot;default&quot;:&quot;Tomato on cream&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const ITEMS = [
+  { kind: 'pr', date: 'Oct 10, 2026', repo: '[owner/repo]', title: '[Pull request title]', body: 'Merged · +[n] −[n] across [n] files', list: [] },
+  { kind: 'push', date: 'Oct 7, 2026', repo: '[owner/repo]', title: '[Latest commit message]', body: 'Pushed 4 commits to main', list: ['[Commit message]', '[Commit message]', '[Commit message]'] },
+  { kind: 'release', date: 'Sep 30, 2026', repo: '[owner/repo]', title: 'v[1.2.0] — [release name]', body: '[One line on what this release adds.]', list: [] },
+  { kind: 'push', date: 'Sep 22, 2026', repo: '[owner/repo]', title: '[Latest commit message]', body: 'Pushed 1 commit to [branch-name]', list: [] },
+  { kind: 'repo', date: 'Sep 15, 2026', repo: '[owner/new-repo]', title: '[Repo description]', body: 'Created a new repository · [Language]', list: [] },
+  { kind: 'pr', date: 'Sep 9, 2026', repo: '[org/repo]', title: '[Pull request title]', body: 'Opened · contribution to [project name]', list: [] },
+];
+const KINDS = { push: { label: 'Push', tone: 'slate', cta: 'View commits ↗' }, pr: { label: 'Pull request', tone: 'sage', cta: 'View pull request ↗' }, release: { label: 'Release', tone: 'gold', cta: 'View release ↗' }, repo: { label: 'New repo', tone: 'outline', cta: 'View repository ↗' } };
+const FILTERS = [['All', null], ['Pushes', 'push'], ['Pull requests', 'pr'], ['Releases', 'release']];
+
+const PAIRS = {
+  'Yolk on cream': ['yolk', 'cream'],
+  'Cream line, no fill': ['cream', 'none'],
+  'Tomato on cream': ['tomato', 'cream'],
+  'Ink on yolk': ['ink', 'yolk'],
+  'Kelly on cream': ['kelly', 'cream'],
+  'Cobalt on cream': ['cobalt', 'cream'],
+};
+
+class Component extends DCLogic {
+  state = { filter: null };
+  renderVals() {
+    const fx = this.props.heroEffect ?? 'extrude';
+    const items = ITEMS
+      .filter(i => !this.state.filter || i.kind === this.state.filter)
+      .map((i, n, arr) => ({ ...i, rule: n === arr.length - 1 ? 'none' : '1px solid var(--border-subtle)', arrow: this.state.hover === n ? 'var(--tomato)' : 'var(--cobalt)', enter: () => this.setState({ hover: n }), leave: () => this.setState({ hover: null }), kindLabel: KINDS[i.kind].label, tone: KINDS[i.kind].tone, cta: KINDS[i.kind].cta, hasList: i.list.length > 0 }));
+    return {
+      fxExtrude: fx === 'extrude',
+      fxPlain: fx === 'dreamboat',
+      showMilo: this.props.showMilo ?? true,
+      miloInk: (PAIRS[this.props.miloPairing] || PAIRS['Tomato on cream'])[0],
+      miloFill: (PAIRS[this.props.miloPairing] || PAIRS['Tomato on cream'])[1],
+      items,
+      isEmpty: items.length === 0,
+      filters: FILTERS.map(([label, k]) => ({ label, active: this.state.filter === k, pick: () => this.setState({ filter: k }) })),
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+:root{
+/* V2 "Board" inks — the default palette */
+--cobalt:#2F55B0;--cobalt-dark:#24448F;--cobalt-light:#6A88CC;
+--tomato:#DF5638;--tomato-dark:#C4442A;
+--yolk:#EDB83C;--yolk-dark:#D29F2A;
+--kelly:#4A9463;--kelly-dark:#3C7D52;
+--v2-cream:#F4EBD9;--kraft:#E8D3AA;--kraft-deep:#DCC290;
+--v2-ink:#2B2F3C;--v2-ink-muted:#4A5468;
+/* v1 names kept as aliases so every component and older file re-inks automatically */
+--blue-gray:var(--cobalt);--blue-gray-dark:var(--cobalt-dark);--blue-gray-light:var(--cobalt-light);
+--red:var(--tomato);--red-dark:var(--tomato-dark);--gold:var(--yolk);--gold-dark:var(--yolk-dark);
+--sage:var(--kelly);--sage-dark:var(--kelly-dark);
+--cream:var(--v2-cream);--cream-deep:#EADFC8;--linen:var(--kraft);--linen-deep:var(--kraft-deep);
+--charcoal:var(--v2-ink);--dark-slate:var(--v2-ink-muted);
+/* accent hierarchy */
+--accent-1:var(--cobalt);--accent-2:var(--tomato);--accent-3:var(--yolk);
+/* semantic surfaces */
+--surface-page:var(--v2-cream);--surface-card:var(--kraft);--surface-raised:#FFFFFF;--surface-inverse:var(--cobalt);--surface-sunken:#EADFC8;
+/* semantic text */
+--text-body:var(--v2-ink);--text-muted:var(--v2-ink-muted);--text-heading:var(--cobalt);--text-inverse:var(--v2-cream);--text-link:var(--cobalt);--text-link-hover:var(--cobalt-dark);
+/* lines & states */
+--border-subtle:rgba(43,47,60,.16);--border-strong:var(--v2-ink-muted);--focus-ring:var(--cobalt);
+--status-positive:var(--kelly);--status-warning:var(--yolk);--status-critical:var(--tomato);--status-info:var(--cobalt);
+}

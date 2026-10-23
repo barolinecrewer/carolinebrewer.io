@@ -1,0 +1,6 @@
+/* Phosphor Icons (MIT) — interim set until custom riso icons exist. Regular = default, duotone = two-ink accent. */
+@import url('https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css');
+@import url('https://unpkg.com/@phosphor-icons/web@2.1.1/src/duotone/style.css');
+:root{--icon-size:20px;--icon-accent:var(--tomato);--icon-accent-opacity:1 /* @kind other */}
+i.cb-icon{display:inline-block;line-height:1;vertical-align:-0.15em;flex-shrink:0}
+i.cb-icon.ph-duotone::before{color:var(--icon-accent);opacity:var(--icon-accent-opacity)}

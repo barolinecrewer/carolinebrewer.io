@@ -1,0 +1,22 @@
+:root{
+/* families */
+--font-hero:'Flapjack',sans-serif;
+--font-alt-display:'Dreamboat',sans-serif;
+--font-stamp:'Big Bird',sans-serif;
+--font-script:'Taxi Driver',cursive;
+--font-body:'Karla',system-ui,sans-serif;
+/* scale */
+--text-2xs:11px;--text-xs:13px;--text-sm:14px;--text-base:16px;--text-md:18px;--text-lg:22px;--text-xl:28px;--text-2xl:34px;--text-3xl:46px;--text-4xl:64px;--text-5xl:88px;
+/* weights (Karla variable 300–800) */
+--weight-light:300;--weight-regular:400;--weight-medium:500;--weight-bold:700;--weight-black:800;
+/* line heights */
+--leading-display:1.1;--leading-tight:1.25;--leading-body:1.6;
+/* tracking */
+--tracking-stamp:.06em;--tracking-tight:-.01em;--tracking-normal:0;
+/* roles */
+--type-display:var(--weight-regular) var(--text-4xl)/var(--leading-display) var(--font-hero);
+--type-heading:var(--weight-regular) var(--text-2xl)/var(--leading-display) var(--font-hero);
+--type-body:var(--weight-regular) var(--text-base)/var(--leading-body) var(--font-body);
+--type-label:var(--weight-bold) var(--text-sm)/1.3 var(--font-body);
+--type-stamp:var(--weight-regular) var(--text-xs)/1.2 var(--font-stamp);
+}

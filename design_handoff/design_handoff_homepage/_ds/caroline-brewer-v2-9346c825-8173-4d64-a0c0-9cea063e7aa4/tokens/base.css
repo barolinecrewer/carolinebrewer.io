@@ -1,0 +1,18 @@
+/* Minimal element defaults — mirrors caroline.css */
+body{font-family:var(--font-body);font-weight:var(--weight-regular);color:var(--text-body);background-color:var(--surface-page);background-image:var(--texture-print);background-blend-mode:var(--texture-blend);background-size:200px 200px;line-height:var(--leading-body);-webkit-font-smoothing:antialiased}
+/* Screenprint grain (default). .print on light grounds, .print-dark on cobalt/ink. */
+.print{background-image:var(--texture-print);background-blend-mode:multiply;background-size:200px 200px}
+.print-dark{background-image:var(--texture-print);background-blend-mode:screen;background-size:200px 200px}
+/* Softer cardstock (v1) grains — still available. Put the same stock on any flat ground. Set the ground colour yourself; the utility only adds tooth. */
+.stock{background-image:var(--texture-card);background-blend-mode:var(--texture-blend);background-size:220px 220px}
+.stock-fine{background-image:var(--texture-card-fine);background-blend-mode:var(--texture-blend);background-size:220px 220px}
+.stock-heavy{background-image:var(--texture-card-heavy);background-blend-mode:var(--texture-blend);background-size:220px 220px}
+/* On dark grounds multiply disappears — lighten the tooth instead. */
+.stock-dark{background-image:var(--texture-card-fine);background-blend-mode:screen;background-size:220px 220px}
+h1,h2,h3{font-family:var(--font-hero);font-weight:400;color:var(--text-heading);line-height:var(--leading-display);margin:0 0 var(--space-4)}
+h1{font-size:var(--text-4xl)}h2{font-size:var(--text-2xl)}h3{font-size:var(--text-xl)}
+p{margin:0 0 var(--space-4);max-width:var(--measure);text-wrap:pretty}
+a{color:var(--text-link);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;transition:color var(--duration-fast) var(--ease-out)}
+a:hover{color:var(--text-link-hover)}
+::selection{background:var(--linen);color:var(--charcoal)}
+:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}

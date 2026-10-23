@@ -1,0 +1,6 @@
+/* Headline print effects — Flapjack / Dreamboat ≥ 34px only. One effect per headline. Body, labels and components stay flat. */
+.fx-extrude{color:var(--yolk);text-shadow:1px 1px 0 var(--tomato),2px 2px 0 var(--tomato),3px 3px 0 var(--tomato),4px 4px 0 var(--tomato),5px 5px 0 var(--tomato),6px 6px 0 var(--tomato)}
+.fx-misreg{position:relative;isolation:isolate;color:var(--cobalt)}
+.fx-misreg::after{content:attr(data-text);position:absolute;left:0;top:0;width:100%;color:var(--tomato);transform:translate(.045em,.03em);mix-blend-mode:multiply;opacity:.8;pointer-events:none}
+.halftone-field{background:radial-gradient(circle,var(--tomato) 34%,transparent 36%) 0 0/9px 9px}
+.fx-vertical{writing-mode:vertical-rl;transform:rotate(180deg)}

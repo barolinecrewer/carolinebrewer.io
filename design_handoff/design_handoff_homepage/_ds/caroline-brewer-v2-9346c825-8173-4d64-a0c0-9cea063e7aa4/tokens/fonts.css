@@ -1,0 +1,7 @@
+/* Webfonts — binaries live in assets/fonts/ */
+@font-face{font-family:'Flapjack';src:url('../assets/fonts/Flapjack.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Big Bird';src:url('../assets/fonts/BigBird.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Taxi Driver';src:url('../assets/fonts/TaxiDriver.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Dreamboat';src:url('../assets/fonts/Dreamboat-Light.woff2') format('woff2');font-weight:300;font-display:swap}
+@font-face{font-family:'Dreamboat';src:url('../assets/fonts/Dreamboat-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Karla';src:url('../assets/fonts/Karla-Variable.woff2') format('woff2-variations');font-weight:300 800;font-display:swap}
