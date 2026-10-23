@@ -1,0 +1,11 @@
+---
+type Tone = 'slate' | 'sage' | 'gold' | 'outline';
+
+interface Props {
+  tone?: Tone;
+}
+
+const { tone = 'slate' } = Astro.props;
+---
+
+<span class={`badge badge--${tone}`}><slot /></span>

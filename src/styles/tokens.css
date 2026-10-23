@@ -1,0 +1,107 @@
+/*
+ * Caroline Brewer v2 design tokens — ported from the design handoff
+ * (design_handoff/design_handoff_homepage, system "caroline-brewer-v2").
+ * Colors, type, spacing, texture and the Milo mask recipe are final; do not
+ * improvise values here — change them only when the design system changes.
+ */
+
+/* ---------- webfonts ---------- */
+@font-face{font-family:'Flapjack';src:url('/fonts/Flapjack.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Big Bird';src:url('/fonts/BigBird.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Taxi Driver';src:url('/fonts/TaxiDriver.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Dreamboat';src:url('/fonts/Dreamboat-Light.woff2') format('woff2');font-weight:300;font-display:swap}
+@font-face{font-family:'Dreamboat';src:url('/fonts/Dreamboat-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Karla';src:url('/fonts/Karla-Variable.woff2') format('woff2-variations');font-weight:300 800;font-display:swap}
+
+/* ---------- colors ---------- */
+:root{
+/* V2 "Board" inks — the default palette */
+--cobalt:#2F55B0;--cobalt-dark:#24448F;--cobalt-light:#6A88CC;
+--tomato:#DF5638;--tomato-dark:#C4442A;
+--yolk:#EDB83C;--yolk-dark:#D29F2A;
+--kelly:#4A9463;--kelly-dark:#3C7D52;
+--v2-cream:#F4EBD9;--kraft:#E8D3AA;--kraft-deep:#DCC290;
+--v2-ink:#2B2F3C;--v2-ink-muted:#4A5468;
+/* v1 names kept as aliases so older files re-ink automatically */
+--blue-gray:var(--cobalt);--blue-gray-dark:var(--cobalt-dark);--blue-gray-light:var(--cobalt-light);
+--red:var(--tomato);--red-dark:var(--tomato-dark);--gold:var(--yolk);--gold-dark:var(--yolk-dark);
+--sage:var(--kelly);--sage-dark:var(--kelly-dark);
+--cream:var(--v2-cream);--cream-deep:#EADFC8;--linen:var(--kraft);--linen-deep:var(--kraft-deep);
+--charcoal:var(--v2-ink);--dark-slate:var(--v2-ink-muted);
+/* accent hierarchy */
+--accent-1:var(--cobalt);--accent-2:var(--tomato);--accent-3:var(--yolk);
+/* semantic surfaces */
+--surface-page:var(--v2-cream);--surface-card:var(--kraft);--surface-raised:#FFFFFF;--surface-inverse:var(--cobalt);--surface-sunken:#EADFC8;
+/* semantic text */
+--text-body:var(--v2-ink);--text-muted:var(--v2-ink-muted);--text-heading:var(--cobalt);--text-inverse:var(--v2-cream);--text-link:var(--cobalt);--text-link-hover:var(--cobalt-dark);
+/* lines & states */
+--border-subtle:rgba(43,47,60,.16);--border-strong:var(--v2-ink-muted);--focus-ring:var(--cobalt);
+--status-positive:var(--kelly);--status-warning:var(--yolk);--status-critical:var(--tomato);--status-info:var(--cobalt);
+}
+
+/* ---------- typography ---------- */
+:root{
+/* families */
+--font-hero:'Flapjack',sans-serif;
+--font-alt-display:'Dreamboat',sans-serif;
+--font-stamp:'Big Bird',sans-serif;
+--font-script:'Taxi Driver',cursive;
+--font-body:'Karla',system-ui,sans-serif;
+/* scale */
+--text-2xs:11px;--text-xs:13px;--text-sm:14px;--text-base:16px;--text-md:18px;--text-lg:22px;--text-xl:28px;--text-2xl:34px;--text-3xl:46px;--text-4xl:64px;--text-5xl:88px;
+/* weights (Karla variable 300–800) */
+--weight-light:300;--weight-regular:400;--weight-medium:500;--weight-bold:700;--weight-black:800;
+/* line heights */
+--leading-display:1.1;--leading-tight:1.25;--leading-body:1.6;
+/* tracking */
+--tracking-stamp:.06em;--tracking-tight:-.01em;--tracking-normal:0;
+/* roles */
+--type-display:var(--weight-regular) var(--text-4xl)/var(--leading-display) var(--font-hero);
+--type-heading:var(--weight-regular) var(--text-2xl)/var(--leading-display) var(--font-hero);
+--type-body:var(--weight-regular) var(--text-base)/var(--leading-body) var(--font-body);
+--type-label:var(--weight-bold) var(--text-sm)/1.3 var(--font-body);
+--type-stamp:var(--weight-regular) var(--text-xs)/1.2 var(--font-stamp);
+}
+
+/* ---------- spacing ---------- */
+:root{
+--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:24px;--space-6:28px;--space-7:32px;--space-8:48px;--space-9:64px;--space-10:96px;--space-11:128px;
+--gutter:24px;--page-max:1120px;--measure:66ch;
+--radius-xs:4px;--radius-sm:6px;--radius-md:12px;--radius-lg:20px;--radius-pill:999px;
+--border-hairline:1px;--border-medium:1.5px;--border-thick:3px;
+--shadow-sm:0 1px 2px rgba(54,59,68,.08);
+--shadow-md:0 4px 14px rgba(54,59,68,.10);
+--shadow-lg:0 14px 40px rgba(54,59,68,.14);
+--shadow-inset:inset 0 1px 0 rgba(255,255,255,.4);
+--ease-out:cubic-bezier(.2,.8,.3,1);
+--duration-fast:120ms;
+--duration-base:200ms;
+--duration-slow:360ms;
+}
+
+/* ---------- texture ---------- */
+:root{
+/* Screenprint tooth — the v2 default ground grain. */
+--texture-print: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.36'/%3E%3C/svg%3E");
+--texture-blend: multiply;
+}
+
+/* Screenprint grain (default). .print on light grounds, .print-dark on cobalt/ink.
+   Use background-color, never the background shorthand, on textured elements. */
+.print{background-image:var(--texture-print);background-blend-mode:multiply;background-size:200px 200px}
+.print-dark{background-image:var(--texture-print);background-blend-mode:screen;background-size:200px 200px}
+
+/* ---------- headline effects ---------- */
+/* Flapjack / Dreamboat ≥ 34px only. One effect per headline. */
+.fx-extrude{color:var(--yolk);text-shadow:1px 1px 0 var(--tomato),2px 2px 0 var(--tomato),3px 3px 0 var(--tomato),4px 4px 0 var(--tomato),5px 5px 0 var(--tomato),6px 6px 0 var(--tomato)}
+
+/* ---------- Milo illustration ---------- */
+/* Recolourable via CSS masks: ink layer any colour, optional fill layer behind. */
+.milo{position:relative;display:block;aspect-ratio:3/2;width:100%}
+.milo>span{position:absolute;inset:0;-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center}
+.milo--point>.milo-fill{-webkit-mask-image:url('/milo/milo-point-shape-mask.png');mask-image:url('/milo/milo-point-shape-mask.png')}
+.milo--point>.milo-ink{-webkit-mask-image:url('/milo/milo-point.svg');mask-image:url('/milo/milo-point.svg')}
+
+/* ---------- element defaults ---------- */
+:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
+::selection{background:var(--linen);color:var(--charcoal)}

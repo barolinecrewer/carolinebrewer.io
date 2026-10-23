@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Feed from '../components/Feed.astro';
+import Footer from '../components/Footer.astro';
+import { fetchFieldNotes } from '../lib/github';
+
+const items = await fetchFieldNotes('barolinecrewer');
+---
+
+<Layout>
+  <Header />
+  <Hero />
+  <main class="feed-main">
+    <Feed items={items} />
+  </main>
+  <Footer />
+</Layout>

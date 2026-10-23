@@ -1,0 +1,12 @@
+---
+interface Props {
+  label?: string;
+}
+
+const { label = 'Milo, a German pointer mix, pointing' } = Astro.props;
+---
+
+<span class="milo milo--point" role="img" aria-label={label}>
+  <span class="milo-fill" style="background: var(--v2-cream)"></span>
+  <span class="milo-ink" style="background: var(--tomato)"></span>
+</span>

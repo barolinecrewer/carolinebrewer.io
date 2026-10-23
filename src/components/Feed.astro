@@ -1,0 +1,43 @@
+---
+import Badge from './Badge.astro';
+import type { FieldNote } from '../lib/github';
+
+interface Props {
+  items: FieldNote[];
+}
+
+const { items = [] } = Astro.props;
+---
+
+<h2 class="feed-title">Field Notes</h2>
+
+{items.length === 0 ? (
+  <p class="feed-empty">Nothing in this pile yet. Milo is looking into it.</p>
+) : (
+  <div class="feed">
+    {items.map((note) => (
+      <article class="note">
+        <span class="note-date">{note.date}</span>
+        <div class="note-body">
+          <div class="note-meta">
+            <Badge tone={note.tone}>{note.kindLabel}</Badge>
+            <span class="note-repo">{note.repo}</span>
+          </div>
+          <h3 class="note-title">
+            <a class="note-link" href={note.url}>
+              {note.title}<svg class="note-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 20.5 L19 5 M12 5 H19 V12" /></svg>
+            </a>
+          </h3>
+          <p class="note-summary">{note.summary}</p>
+          {note.commits.length > 0 && (
+            <ul class="note-commits">
+              {note.commits.map((commit) => (
+                <li>{commit}</li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </article>
+    ))}
+  </div>
+)}
