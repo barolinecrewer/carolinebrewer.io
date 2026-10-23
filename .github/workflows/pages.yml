@@ -18,14 +18,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-go@v5
-        with:
-          go-version: "1.25"
+      - uses: oven-sh/setup-bun@v2
 
-      # Bump the pseudo-version (also in the Justfile) to pick up upstream linkme changes.
-      - run: go run github.com/ironicbadger/linkme/cmd/linkme@v0.0.0-20260904151423-d58495c470fd build
+      - run: bun install --frozen-lockfile
 
-      - run: echo carolinebrewer.io > dist/CNAME
+      - run: bun run build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/configure-pages@v5
 
