@@ -5,7 +5,8 @@
  * - PushEvent      → Push badge, latest commit message, up to 3 commits, compare link
  * - PullRequestEvent → Pull request badge, PR title, merged/opened summary, PR link
  * - ReleaseEvent   → Release badge, "v{tag} — {name}", first line of the body, release link
- * - CreateEvent (repository) → New repo badge, repo description, language, repo link
+ * - New repos      → New repo badge, repo description, language, repo link (repos API,
+ *   not CreateEvent: the events feed lags the repos API and misses repo creation)
  *
  * Notes on the public events API:
  * - PR payloads are slim (no title, html_url or stats), so each PR event is
@@ -25,6 +26,8 @@ export interface FieldNote {
   kind: NoteKind;
   kindLabel: string;
   tone: 'slate' | 'sage' | 'gold' | 'outline';
+  /** Sort key; rendered date is derived from it. */
+  ts: string;
   date: string;
   repo: string;
   title: string;
@@ -42,6 +45,7 @@ const KINDS: Record<NoteKind, { kindLabel: string; tone: FieldNote['tone'] }> = 
 
 const MAX_ITEMS = 8;
 const MAX_PAGES = 3; // 90 events scanned, newest first
+const REPO_WINDOW_DAYS = 90; // matches the events API window
 const ZERO_SHA = /^0+$/;
 
 interface GhEvent {
@@ -120,7 +124,11 @@ interface Candidate {
 }
 
 function mapEvent(event: GhEvent): Candidate | null {
-  const base = { date: formatDate(event.created_at), repo: event.repo.name };
+  const base = {
+    ts: event.created_at,
+    date: formatDate(event.created_at),
+    repo: event.repo.name,
+  };
 
   switch (event.type) {
     case 'PushEvent': {
@@ -232,39 +240,12 @@ function mapEvent(event: GhEvent): Candidate | null {
       };
     }
 
-    case 'CreateEvent': {
-      if (event.payload.ref_type !== 'repository') return null;
-      return {
-        ...base,
-        build: async () => {
-          const repo = await fetchJson<{
-            language?: string | null;
-            private?: boolean;
-          }>(`https://api.github.com/repos/${event.repo.name}`);
-          // Same guard: drop the item if the enrichment sees a private repo.
-          if (repo?.private) return null;
-          const language = repo?.language ?? null;
-          return {
-            ...base,
-            ...KINDS.repo,
-            kind: 'repo',
-            title: event.payload.description || event.repo.name,
-            summary: language
-              ? `Created a new repository · ${language}`
-              : 'Created a new repository',
-            commits: [],
-            url: `https://github.com/${event.repo.name}`,
-          };
-        },
-      };
-    }
-
     default:
       return null;
   }
 }
 
-export async function fetchFieldNotes(user: string): Promise<FieldNote[]> {
+async function fetchEventNotes(user: string): Promise<FieldNote[]> {
   const candidates: Candidate[] = [];
 
   try {
@@ -284,7 +265,46 @@ export async function fetchFieldNotes(user: string): Promise<FieldNote[]> {
   }
 
   const notes = await Promise.all(candidates.map((candidate) => candidate.build()));
-  return notes
-    .filter((note): note is FieldNote => note !== null)
-    .slice(0, MAX_ITEMS);
+  return notes.filter((note): note is FieldNote => note !== null);
+}
+
+/**
+ * New repos come from the repos API instead of CreateEvent: the events feed
+ * lags it by hours and sometimes never publishes a repo's own creation.
+ */
+async function fetchRepoNotes(user: string): Promise<FieldNote[]> {
+  const repos = await fetchJson<
+    { name: string; description: string | null; language: string | null; created_at: string }[]
+  >(`https://api.github.com/users/${user}/repos?sort=created&direction=desc&per_page=10`);
+  if (!repos) return [];
+
+  const cutoff = Date.now() - REPO_WINDOW_DAYS * 86_400_000;
+  return repos
+    .filter((repo) => Date.parse(repo.created_at) > cutoff)
+    .map((repo) => ({
+      ...KINDS.repo,
+      kind: 'repo' as const,
+      ts: repo.created_at,
+      date: formatDate(repo.created_at),
+      repo: `${user}/${repo.name}`,
+      title: repo.description || repo.name,
+      summary: repo.language
+        ? `Created a new repository · ${repo.language}`
+        : 'Created a new repository',
+      commits: [],
+      url: `https://github.com/${user}/${repo.name}`,
+    }));
+}
+
+export async function fetchFieldNotes(user: string): Promise<FieldNote[]> {
+  const [events, repos] = await Promise.all([fetchEventNotes(user), fetchRepoNotes(user)]);
+  const seen = new Set<string>();
+  const unique = [...events, ...repos]
+    .sort((a, b) => b.ts.localeCompare(a.ts))
+    .filter((note) => {
+      if (seen.has(note.url)) return false;
+      seen.add(note.url);
+      return true;
+    });
+  return unique.slice(0, MAX_ITEMS);
 }
