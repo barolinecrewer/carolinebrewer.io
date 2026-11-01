@@ -3,6 +3,10 @@ name: Deploy GitHub Pages
 on:
   push:
     branches: [main]
+  schedule:
+    # Daily rebuild so the Field Notes feed re-fetches GitHub public events.
+    # The feed is baked in at build time; pushes alone leave it stale.
+    - cron: '17 6 * * *'
   workflow_dispatch:
 
 permissions:
